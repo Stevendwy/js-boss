@@ -1,0 +1,85 @@
+.contendbodyheadlist{
+	display: inline-block;
+	text-align: center;
+    position: relative;
+}
+.contendbodyheadlist:nth-child(1){
+	width: 9%;
+}
+.contendbodyheadlist:nth-child(2){
+	width: 16%;
+}
+.contendbodyheadlist:nth-child(3){
+	width: 16%;
+}
+.contendbodyheadlist:nth-child(4){
+	width: 14%;
+}
+.contendbodyheadlist:nth-child(5){
+	width: 14%;
+}
+.contendbodyheadlist:nth-child(6){
+	width: 14%;
+}
+.contendbodyheadlist:nth-child(7){
+	width: 9%;
+}
+.contendbodyheadlist:nth-child(8){
+	width: 8%;
+}
+
+/*注册页*/
+.okbtn{
+	text-align: center;
+    background: #FFBF00;
+}
+.start{
+	position: absolute;
+    right: -12px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FF3232;
+    z-index: 1;
+    top: 9px;
+}
+.dd-list li{
+	margin-bottom: 10px;
+}
+.neartime{
+	position: relative;
+	margin-bottom: 4px;
+}
+#refreshimg{
+	position: absolute;
+	right: 0;
+    top: -16px;
+}
+#fixeddiv{
+	position: fixed;
+	background: #D8D8D8;
+	border-radius: 4px;
+	width: 110px;
+	height: 80px;
+	display: none;
+	z-index: 2;
+	margin: 16%;
+	text-align: center;
+}
+#fixedspan{
+	position: relative;
+    top: 30%;
+    font-family: PingFangSC-Medium;
+	font-size: 14px;
+	color: #666666;
+}
+#nearphone{
+	height: 15rem;
+	width: 100%;
+}
+#nearphone .dd-list{
+	max-height: 14rem;
+	overflow-y: scroll;
+}
+.liindex{
+	margin:10px 40px 10px 25px;
+}

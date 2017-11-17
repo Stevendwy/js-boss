@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>开通账号</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!-- STYLESHEETS -->
+		<!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="css/cloud-admin.css">
+		<link rel="stylesheet" type="text/css" href="css/themes/default.css" id="skin-switcher">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- DATE RANGE PICKER -->
+		<link rel="stylesheet" type="text/css" href="js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+		<!-- FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			.content {
+				height: 500px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/usermanager/usermanager.css" />
+	</head>
+
+	<body>
+		<!-- HEADER -->
+		<header class="navbar clearfix" id="header">
+			<div class="container">
+				<div class="navbar-brand">
+					<!-- COMPANY LOGO -->
+					<a href="index.html">
+						<img src="img/logo/logo.png" alt="Cloud Admin Logo" class="img-responsive" height="30" width="120">
+					</a>
+					<!-- /COMPANY LOGO -->
+					<!-- SIDEBAR COLLAPSE -->
+					<div id="sidebar-collapse" class="sidebar-collapse btn">
+						<i class="fa fa-bars" data-icon1="fa fa-bars" data-icon2="fa fa-bars"></i>
+					</div>
+					<!-- /SIDEBAR COLLAPSE -->
+				</div>
+				<!-- END TOP NAVIGATION MENU -->
+			</div>
+		</header>
+		<!--/HEADER -->
+
+		<!-- PAGE -->
+		<section id="page">
+			<!-- SIDEBAR -->
+			<div id="sidebar" class="sidebar">
+				<div class="sidebar-menu nav-collapse">
+					<div class="divide-20"></div>
+					<!-- SIDEBAR MENU -->
+					<ul>
+						<li class="has-sub">
+							<a href="javascript:;" class="">
+								<i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">监控控制</span>
+								<span class="arrow"></span>
+							</a>
+							<ul class="sub">
+								<li>
+									<a class="" href="portvistor.html"><span class="sub-menu-text">接口访问</span></a>
+								</li>
+								<li>
+									<a class="" href="userlistener.html"><span class="sub-menu-text">用户监测</span></a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="numbercollection.html">
+								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">数据统计</span>
+							</a>
+						</li>
+						<li class="has-sub active">
+							<a href="javascript:;" class="">
+								<i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">用户管理</span>
+								<span class="arrow"></span>
+							</a>
+							<ul class="sub">
+								<li class="current">
+									<a class="" href="#"><span class="sub-menu-text">开通账户</span></a>
+								</li>
+								<li>
+									<a class="" href="usermanager.html"><span class="sub-menu-text">用户管理</span></a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="setting.html">
+								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">设置</span>
+							</a>
+						</li>
+					</ul>
+					<!-- /SIDEBAR MENU -->
+				</div>
+			</div>
+			<!-- /SIDEBAR -->
+			<style type="text/css">
+				#content_type {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+				
+				#content_type>#mask_type {
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					background-color: rgba(0, 0, 0, 0);
+					border: 0;
+				}
+				
+				#content_type>#remind_type {
+					position: absolute;
+					top: 24px;
+					right: 8px;
+					height: 8px;
+					width: 8px;
+					border-radius: 4px;
+					background-color: red;
+				}
+				
+				#regist {
+					width: 200px;
+					height: 40px;
+					background-color: white;
+					/*border: 0;*/
+					margin-top: 24px;
+				}
+				
+				input,
+				#mask_type {
+					margin-top: 8px;
+					width: 200px;
+					height: 40px;
+				}
+				
+				#container_buttons {
+					width: 200px;
+					display: flex;
+					border-top: #D8D8D8 solid 1px;
+					align-items: center;
+					margin-top: 8px;
+				}
+				
+				#container_buttons>.button_type {
+					/*width: 200px;*/
+					border: 0;
+					background-color: white;
+					height: 40px;
+					border-left: #D8D8D8 solid 1px;
+					font-size: 12px;
+				}
+			</style>
+			<div id="main-content">
+				<div class="container content">
+					<input id="phone" placeholder="手机号" />
+					<input id="username" placeholder="姓名" />
+					<input id="company" placeholder="公司" />
+					<div id="container_buttons">
+						<button class="button_type" onclick="typeClick(0, this)">无</button>
+						<button class="button_type" onclick="typeClick(1, this)">经销商</button>
+						<button class="button_type" onclick="typeClick(2, this)">汽配商</button>
+						<button class="button_type" onclick="typeClick(3, this)">修理厂</button>
+						<button class="button_type" onclick="typeClick(4, this)">4S店</button>
+						<button class="button_type" onclick="typeClick(5, this)">个人</button>
+			<div id="main-content">
+				<div class="container">
+					<!--弹框-->
+					<div id="fixeddiv">
+						<span id="fixedspan">开通成功</span>
+					</div>
+					<div class="row">
+						<div id="content" class="col-lg-12">
+							<!-- PAGE HEADER-->
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="page-header">
+										<!-- STYLER -->
+
+										<!-- /STYLER -->
+										<!-- BREADCRUMBS -->
+										<ul class="breadcrumb">
+											<li>
+												<i class="fa fa-home"></i>
+												<a href="index.html">主页</a>
+											</li>
+											<li>
+												<a href="#">用户管理</a>
+											</li>
+											<li>开通账户</li>
+										</ul>
+										<!-- /BREADCRUMBS -->
+										<div class="clearfix">
+											<h3 class="content-title pull-left">开通账户</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /PAGE HEADER -->
+							<div class="row">
+								<div class="col-md-12">
+									<!-- BOX -->
+									<div class="box border orange">
+										<div class="box-title">
+											<h4><i class="fa fa-list-ul"></i>开通账户</h4>
+											<div class="tools">
+												<a href="#box-config" data-toggle="modal" class="config">
+													<i class="fa fa-cog"></i>
+												</a>
+												<a href="javascript:;" class="reload">
+													<i class="fa fa-refresh"></i>
+												</a>
+												<a href="javascript:;" class="collapse">
+													<i class="fa fa-chevron-up"></i>
+												</a>
+												<a href="javascript:;" class="remove">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</div>
+										<div class="box-body clearfix">
+											<div class="dd" id="nestable">
+												<ol class="dd-list">
+													<li class="dd-item" data-id="1">
+														<input type="text" id="phone" class="form-control" placeholder="输入需开通手机号">
+														<span class="start">
+															*
+														</span>
+													</li>
+													<li class="dd-item" data-id="2">
+														<input type="text" id="name" class="form-control" placeholder="姓名">
+													</li>
+													<li class="dd-item" data-id="3">
+														<input type="text" id="company" class="form-control" placeholder="公司">
+														<span class="start">
+															*
+														</span>
+													</li>
+													<li class="dd-item" data-id="4">
+														<div class="input-group">
+															<input type="text" class="form-control" id="showtype" aria-label="..." placeholder="类型">
+															<div class="input-group-btn">
+																<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+																<ul class="dropdown-menu dropdown-menu-right">
+																	<li>
+																		<a href="#" class="chancetype">经销商</a>
+																	</li>
+																	<li>
+																		<a href="#" class="chancetype">汽配商</a>
+																	</li>
+																	<li>
+																		<a href="#" class="chancetype">修理厂</a>
+																	</li>
+																	<li>
+																		<a href="#" class="chancetype">4S店</a>
+																	</li>
+																	<li>
+																		<a href="#" class="chancetype">个人</a>
+																	</li>
+																</ul>
+															</div>
+															<!-- /btn-group -->
+														</div>
+														<!-- /input-group -->
+													</li>
+													<!--开通时间-->
+													<!--<li class="dd-item" data-id="5">
+														<div class="input-group">
+															<input type="text" class="form-control" aria-label="..." placeholder="开通时间">
+															<div class="input-group-btn">
+																<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+																<ul class="dropdown-menu dropdown-menu-right">
+																	<li>
+																		<a href="#">1个月</a>
+																	</li>
+																	<li>
+																		<a href="#">3个月</a>
+																	</li>
+																	<li>
+																		<a href="#">1年</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</li>-->
+													<!--<li class="dd-item" data-id="6">
+														<input type="text" class="form-control" placeholder="Text input">
+													</li>-->
+													<!--上传图片-->
+													<!--<li class="dd-item" data-id="7">
+														<input type="file" class="form-control" placeholder="公司">
+													</li>-->
+													<li class="dd-item" data-id="8" id="okbtn">
+														<div class="dd-handle  okbtn">确认开通</div>
+													</li>
+												</ol>
+											</div>
+										</div>
+									</div>
+									<!-- /BOX -->
+									<div class="neartime">
+										<strong>近5分钟开通账号</strong>
+										<img id="refreshimg" src="img/usermanager/icon_refresh.png"/>
+									</div>
+									<div class="form-control" id="nearphone">
+										<ol class="dd-list">
+											<li class="dd-item liheadindex">
+												<span class="liindex">序号</span>
+												<span class="licontent">手机号</span>
+											</li>
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button id="regist" onclick="regist()">开通账号</button>
+				</div>
+			</div>
+		</section>
+		<script src="js/jquery/jquery-2.0.3.min.js"></script>
+		<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="bootstrap-dist/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-daterangepicker/moment.min.js"></script>
+		<script src="js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+		<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+		<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+		<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+		<!--/PAGE -->
+		<!-- JAVASCRIPTS -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<!-- JQUERY -->
+		<script src="js/jquery/jquery-2.0.3.min.js"></script>
+		<!-- JQUERY UI-->
+		<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<!-- BOOTSTRAP -->
+		<script src="bootstrap-dist/js/bootstrap.min.js"></script>
+
+		<!-- DATE RANGE PICKER -->
+		<script src="js/bootstrap-daterangepicker/moment.min.js"></script>
+
+		<script src="js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+		<!-- SLIMSCROLL -->
+		<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+		<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+		<!-- COOKIE -->
+		<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
+		<!-- CUSTOM SCRIPT -->
+		<script src="js/script.js"></script>
+		<script src="js/usermanager/dredge.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			jQuery(document).ready(function() {
+				App.setPage("widgets_box"); //Set current page
+				App.init(); //Initialise plugins and elements
+			});
+
+			jQuery('#phone').focus()
+
+			var indexType = 0
+			var office = '无'
+			changeSelected(indexType)
+
+			function typeClick(index, e) {
+				office = e.innerHTML
+				console.log("office: " + office)
+				indexType = index
+				changeSelected(indexType)
+			}
+
+			function changeSelected(indexType) {
+				var buttons = document.getElementsByClassName('button_type')
+				for(var i = 0; i < buttons.length; i++) {
+					var button = buttons[i]
+					if(i == indexType) {
+						button.style.backgroundColor = 'red'
+						button.style.color = 'white'
+					}else {
+						button.style.backgroundColor = 'white'
+						button.style.color = '#333'
+					}
+				}
+			}
+
+			function regist() {
+				var _phone = document.getElementById('phone').value
+				var _username = document.getElementById('username').value
+				var _company = document.getElementById('company').value
+
+				if(_phone.length < 1) {
+					alert('手机号')
+					return
+				}
+				if(_username.length < 1) {
+					alert('姓名')
+					return
+				}
+				if(_company.length < 1) {
+					alert('公司')
+					return
+				}
+
+				var _obj = {
+					phone: _phone,
+					username: _username,
+					company: _company,
+					office: office
+				}
+
+				var _url = 'http://192.168.10.248:5089/createaccount?username=' + _username + '&phone=' + _phone + '&company=' + _company + '&office=' + office
+				postAjax(_url, _obj, function(res) {
+					if(res.code == 1) alert(开通成功)
+					else alert(res.msg)
+				})
+			}
+			/*
+			{
+				phone: "_phone",
+				username: "_username",
+				company: "_company",
+				office: "office"
+			}
+			*/
+		</script>
+		</script>
+		<!-- /JAVASCRIPTS -->
+	</body>
+
+</html>
